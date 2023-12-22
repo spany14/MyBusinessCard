@@ -25,13 +25,8 @@
   </head>
   <body style='margin: 0px; overflow: hidden;'>
     <div style='position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); width:100%; text-align: center; z-index: 1;'>
-      <button class="button" id="btn1">Play Sound</button>
-      <button class="button" id="btn2">Stop Sound</button>
-      <button class="button" id="btn3">Stop Video</button>
-      <button class="button" id="btn4">Play Video</button>
-      <button class="button" id="btn5">LinkedIn</button>
-      <button class="button" id="btn6">Go to webpage</button>
-      <button class="button" id="btn7">Demo animated model</button>
+      <button class="button" id="btn1">LinkedIn</button>
+      <button class="button" id="btn2">Blogs</button>
 
     </div>
     <a-scene embedded arjs="debugUIEnabled: false;" vr-mode-ui="enabled: false">   
@@ -47,26 +42,11 @@
             console.log("lost");
             var v = document.querySelector('#mivideo').pause();
           });
-          document.getElementById("btn1").addEventListener("click", (e) => {
-            var v = document.querySelector('#mivideo').muted=false;
-          });
-          document.getElementById("btn2").addEventListener("click", (e) => {
-            var v = document.querySelector('#mivideo').muted=true;
-          });
-          document.getElementById("btn3").addEventListener("click", (e) => {
-            var v = document.querySelector('#mivideo').pause();
-          });
-          document.getElementById("btn4").addEventListener("click", (e) => {
-            var v = document.querySelector('#mivideo').play();
-          });
-          document.getElementById("btn5").addEventListener("click", (e)=>{
+          document.getElementById("btn1").addEventListener("click", (e)=>{
           window.open("https://www.linkedin.com/in/spandanamatapathi/", "_blank");
           })
-          document.getElementById("btn6").addEventListener("click", (e)=>{
-          window.open("https://xreteh.com", "_blank");
-          })
-          document.getElementById("btn7").addEventListener("click", (e)=>{
-          window.open("https://ar.stereomode.com/demo/index.html", "_blank");
+          document.getElementById("btn2").addEventListener("click", (e)=>{
+          window.open("https://spanyblogs.wordpress.com/", "_blank");
           })
 
         </script>
