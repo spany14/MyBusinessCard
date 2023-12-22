@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/dev/aframe/build/aframe-ar.js"></script>
+    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <style>
+      .button {
+        background-color: #000000; 
+        border: none;
+        color: white;
+        padding: 7px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+        border: 2px solid rgb(233, 238, 243);
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      }
+    </style>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  </head>
+  <body style='margin: 0px; overflow: hidden;'>
+    <div style='position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); width:100%; text-align: center; z-index: 1;'>
+      <button class="button" id="btn1">Play Sound</button>
+      <button class="button" id="btn2">Stop Sound</button>
+      <button class="button" id="btn3">Stop Video</button>
+      <button class="button" id="btn4">Play Video</button>
+      <button class="button" id="btn5">LinkedIn</button>
+      <button class="button" id="btn6">Go to webpage</button>
+      <button class="button" id="btn7">Demo animated model</button>
+
+    </div>
+    <a-scene embedded arjs="debugUIEnabled: false;" vr-mode-ui="enabled: false">   
+      <a-marker preset="hiro">
+        
+        <script> 
+          var m = document.querySelector("a-marker");
+          m.addEventListener("markerFound", (e) => {
+            console.log("found");
+            
+          });
+          m.addEventListener("markerLost", (e) => {
+            console.log("lost");
+            var v = document.querySelector('#mivideo').pause();
+          });
+          document.getElementById("btn1").addEventListener("click", (e) => {
+            var v = document.querySelector('#mivideo').muted=false;
+          });
+          document.getElementById("btn2").addEventListener("click", (e) => {
+            var v = document.querySelector('#mivideo').muted=true;
+          });
+          document.getElementById("btn3").addEventListener("click", (e) => {
+            var v = document.querySelector('#mivideo').pause();
+          });
+          document.getElementById("btn4").addEventListener("click", (e) => {
+            var v = document.querySelector('#mivideo').play();
+          });
+          document.getElementById("btn5").addEventListener("click", (e)=>{
+          window.open("https://www.linkedin.com/in/spandanamatapathi/", "_blank");
+          })
+          document.getElementById("btn6").addEventListener("click", (e)=>{
+          window.open("https://xreteh.com", "_blank");
+          })
+          document.getElementById("btn7").addEventListener("click", (e)=>{
+          window.open("https://ar.stereomode.com/demo/index.html", "_blank");
+          })
+
+        </script>
+     
+     <a-entity
+          position="5 0 0"
+          rotation="0 0 0"
+          scale="10 10 10"
+          gltf-model="./services.glb"
+          animation="property: position; from: 4 0 -1; to: 4 0 1; dur: 1000; easing: easeInCirc; loop: true; dir: alternate"
+        ></a-entity>
+
+        <a-text 
+        position="-0.5 -0.5 2"
+        rotation="-90 0 0"
+        color="white"
+        scale="1 1 1"
+        value="Let's get Immersive!"></a-text>
+        
+      <a-image src="./businesscard.png"
+          position="0.5 0.0 0"
+          rotation="-90 0 0"
+          scale="5 3 3">
+          
+      </a-image>
+     
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+</body>
+
+</html>
